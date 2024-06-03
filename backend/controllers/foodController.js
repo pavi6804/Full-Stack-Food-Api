@@ -7,13 +7,16 @@ const addFood = async (req, res) => {
 
     let image_filename = `${req.file.filename}`;
 
+    
+
     const food = new foodModel({
         name:req.body.name,
         description:req.body.description,
-        price:req.body.price,
         category:req.body.category,
+        price:req.body.price,
         image:image_filename
     })
+    //console.log(name, description, category, price, image_filename);
     try{
         await food.save();
         res.json({success:true, message:"Food Added"})
